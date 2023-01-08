@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="header">
+    Users
+  </div>
+  <table style="width: 100%">
+    <tr>
+      <th class="id">ID</th>
+      <th class="email">email</th>
+      <th class="email">Role</th>
+      <th class="status">Status</th>
+      <th></th>
+      <th style="width: 10px">
+        <button mat-icon-button>
+          <mat-icon (click)="openDialog()">add</mat-icon>
+        </button>
+      </th>
+    </tr>
+    <tr *ngFor="let user of usersList">
+      <th class="id">{{user.id}}</th>
+      <th class="email" style="width: 150px;word-break: break-word">{{user.email}}</th>
+      <th class="email">{{user.role}}</th>
+      <th class="status">
+        <button *ngIf="user.isActivated &&user.role !=='ADMIN'" mat-stroked-button class="active"
+                (click)="changeUserStatus(user.id,!user.isActivated)">ACTIVE
+        </button>
+        <button *ngIf="!user.isActivated&&user.role !=='ADMIN'" mat-stroked-button class="not-active"
+                (click)="changeUserStatus(user.id,!user.isActivated)">NOT ACTIVE
+        </button>
+      </th>
+      <th style="width: 10px">
+        <button *ngIf="user.role !=='ADMIN'"  mat-icon-button>
+          <mat-icon>edit icon</mat-icon>
+        </button>
+      </th>
+      <th style="width: 10px">
+        <button *ngIf="user.role !=='ADMIN'" mat-icon-button (click)="delete(user.id)">
+          <mat-icon>delete icon</mat-icon>
+        </button>
+      </th>
+    </tr>
+
+  </table>
+</div>

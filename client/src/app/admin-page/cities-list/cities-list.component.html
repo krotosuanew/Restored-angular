@@ -1,0 +1,28 @@
+<div class="container">
+<div class="header">
+  Cities
+</div>
+  <table style="width: 100%">
+    <tr>
+      <th class="id">ID</th>
+      <th class="name">City name</th>
+      <th>Price</th>
+      <th></th>
+      <th style="width: 10px"><button mat-icon-button >
+        <mat-icon (click)="openDialog()">add</mat-icon>
+      </button></th>
+    </tr>
+    <tr *ngFor="let city of cityList">
+      <th class="id">{{city.id}}</th>
+      <th class="name" style="width: 150px;word-break: break-word">{{city.name}}</th>
+      <th>${{city.price}}</th>
+      <th style="width: 10px"><button mat-icon-button >
+        <mat-icon (click)="openDialog(city)">edit icon</mat-icon>
+      </button></th>
+      <th style="width: 10px"><button mat-icon-button (click)="delete(city.id)">
+        <mat-icon>delete icon</mat-icon>
+      </button></th>
+    </tr>
+
+  </table>
+</div>

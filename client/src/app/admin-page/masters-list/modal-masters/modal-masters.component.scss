@@ -1,0 +1,27 @@
+.modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input{
+  width: 100%;
+}
+.button-group{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+button{
+  width: 100%;
+}
+.success{
+  color:green;
+  border-color: green;
+
+}
+.close{
+  margin-left: 10px;
+  color: red;
+  border-color: red;
+}

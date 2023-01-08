@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="header">
+    Masters
+  </div>
+  <table style="width: 100%">
+    <tr>
+      <th class="id">ID</th>
+      <th class="userId">user ID</th>
+      <th class="name">Name of worker</th>
+      <th class="rating">Rating</th>
+      <th class="city">City(s)</th>
+      <th class="comments">Comments</th>
+      <th class="status">Status</th>
+      <th></th>
+      <th style="width: 10px">
+        <button mat-icon-button>
+          <mat-icon (click)="openDialog()">add</mat-icon>
+        </button>
+      </th>
+    </tr>
+    <tr *ngFor="let master of mastersList">
+      <th class="id">{{master.id}}</th>
+      <th class="userId">{{master.user.id}}</th>
+      <th class="name" style="width: 200px;word-break: break-word">{{master.name}}</th>
+      <th class="rating">{{master.rating}}</th>
+      <th><span *ngFor="let city of master.cities">{{city.name}}, </span></th>
+      <th class="comments">
+        <mat-icon>comment icon</mat-icon>
+      </th>
+      <th class="status">
+        <button *ngIf="master.isActivated" mat-stroked-button class="active" (click)="changeStatus(master.id,!master.isActivated)">ACTIVE</button>
+        <button *ngIf="!master.isActivated" mat-stroked-button class="not-active" (click)="changeStatus(master.id,!master.isActivated)">NOT ACTIVE</button>
+      </th>
+      <th style="width: 10px">
+        <button mat-icon-button>
+          <mat-icon (click)="openDialog(master)">edit icon</mat-icon>
+        </button>
+      </th>
+      <th style="width: 10px">
+        <button mat-icon-button (click)="delete(master.id)">
+          <mat-icon>delete icon</mat-icon>
+        </button>
+      </th>
+    </tr>
+
+  </table>
+</div>

@@ -1,0 +1,33 @@
+
+.registration{
+  width: 50%;
+  margin-bottom: 15%;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  box-shadow: 1px 0 3px silver;
+}
+.form{
+  width: 90%;
+  margin-left: 20px;
+}
+.input{
+  width: 100%;
+}
+.sing-in{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.link{
+  text-decoration: none;
+  color: #008ffe;
+}
+.registration-button{
+  border-color:orange;color:orange;margin-top: -10px
+}
+

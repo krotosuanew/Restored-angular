@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header">
+    Clocks
+  </div>
+  <table style="width: 100%">
+    <tr>
+      <th class="id">ID</th>
+      <th class="name">Name of the watch</th>
+      <th>Number of hours</th>
+      <th></th>
+      <th style="width: 10px"><button mat-icon-button >
+        <mat-icon (click)="openDialog()">add</mat-icon>
+      </button></th>
+    </tr>
+    <tr *ngFor="let clock of clocksList">
+      <th class="id">{{clock.id}}</th>
+      <th class="name" style="width: 150px;word-break: break-word">{{clock.name}}</th>
+      <th>{{clock.date.slice(0,5)}}</th>
+      <th style="width: 10px"><button mat-icon-button >
+        <mat-icon (click)="openDialog(clock)">edit icon</mat-icon>
+      </button></th>
+      <th style="width: 10px"><button mat-icon-button (click)="delete(clock.id)">
+        <mat-icon>delete icon</mat-icon>
+      </button></th>
+    </tr>
+
+  </table>
+</div>

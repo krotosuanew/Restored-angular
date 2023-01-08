@@ -1,0 +1,37 @@
+<mat-grid-list cols="12" rowHeight="100%" ali>
+  <mat-grid-tile colspan="2">
+    <mat-nav-list class="button-list">
+      <a class="link" routerLink="orders">
+        <mat-list-item [ngClass]="{selected: currentRoute==='/admin/orders'}">
+          Orders
+        </mat-list-item>
+      </a>
+      <a class="link" routerLink="cities">
+        <mat-list-item  [ngClass]="{selected: currentRoute==='/admin/cities'}">
+          Cities
+        </mat-list-item>
+      </a>
+      <a class="link" routerLink="masters">
+        <mat-list-item [ngClass]="{selected: currentRoute==='/admin/masters'}">
+          Masters
+        </mat-list-item>
+      </a>
+      <a class="link" routerLink="clocks">
+        <mat-list-item [ngClass]="{selected: currentRoute==='/admin/clocks'}">
+          Clocks
+        </mat-list-item>
+      </a>
+      <a class="link" routerLink="users">
+        <mat-list-item [ngClass]="{selected: currentRoute==='/admin/users'}">
+          Users
+        </mat-list-item>
+      </a>
+    </mat-nav-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan='10'>
+    <div class="lists">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

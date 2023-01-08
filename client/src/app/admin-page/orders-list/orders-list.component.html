@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="header">
+    Orders
+  </div>
+  <table style="width: 100%">
+    <tr>
+      <th class="id">ID</th>
+      <th class="name">name</th>
+      <th class="date-start">Date and time</th>
+      <th class="master">Worker</th>
+      <th class="city">City</th>
+      <th class="price-hour">Price per hour</th>
+      <th class="number-hour">Number of hours</th>
+      <th class="total">Total</th>
+      <th class="status">Status</th>
+      <th class="camera"><mat-icon>camera_alt</mat-icon></th>
+      <th class="download"><mat-icon>cloud_download</mat-icon></th>
+
+      <th style="width: 10px"><button mat-icon-button >
+        <mat-icon (click)="openDialog()">add</mat-icon>
+      </button></th>
+    </tr>
+    <tr *ngFor="let order of ordersList">
+      <th class="id">{{order.id}}</th>
+      <th class="date">{{order.name}}</th>
+      <th class="name">{{order.time | date}}</th>
+      <th class="name">{{order.master.name}}</th>
+      <th class="name">{{order.city.name}}</th>
+      <th class="name">{{order.price}}</th>
+      <th class="name">{{ order.sizeClock.date}}</th>
+      <th class="name" style="width: 150px;word-break: break-word">{{order.price}}</th>
+      <th class="name">{{order.status}}</th>
+      <th><mat-icon>camera_alt</mat-icon></th>
+      <th style="width: 10px"><button mat-icon-button >
+        <mat-icon>edit icon</mat-icon>
+      </button></th>
+      <th style="width: 10px"><button mat-icon-button (click)="delete(order.id)">
+        <mat-icon>delete icon</mat-icon>
+      </button></th>
+    </tr>
+
+  </table>
+</div>

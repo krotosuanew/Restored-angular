@@ -1,0 +1,73 @@
+<div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center">
+  <div class="registration">
+    <h1 >Registration</h1>
+    <form  [formGroup]="registerForm" class="form">
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" name="name" type="text" matInput  placeholder="Ivan">
+      <mat-error *ngIf="registerForm.controls.name.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" name="email" type="text" matInput  placeholder="clockwise@example.com">
+      <mat-error *ngIf="registerForm.controls.email.hasError('email') && !registerForm.controls.email.hasError('required')">
+        Please enter email like : clockwise@example.com
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" name="password"  matInput [type]="hide ? 'password' : 'text'">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.controls.password.hasError('minlength') && !registerForm.controls.password.hasError('required')">
+        Please enter password min 6 length
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Repeat password</mat-label>
+      <input formControlName="repeatPassword"  name="repeatPassword" matInput [type]="hideRepeatPass ? 'password' : 'text'">
+      <button type="button" mat-icon-button matSuffix (click)="hideRepeatPass = !hideRepeatPass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPass">
+        <mat-icon>{{hideRepeatPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.controls.repeatPassword.hasError('minlength') && !registerForm.controls.repeatPassword.hasError('required')">
+        Please enter repeat password min 6 length
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.repeatPassword.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.repeatPassword.hasError('matching')">
+        Confirm Password does not match
+      </mat-error>
+    </mat-form-field>
+      <div>
+        <mat-checkbox formControlName="agree" name="agree" >I agree with everything</mat-checkbox>
+      <div style="color: #a4a4a4; padding-bottom: 0.5rem" *ngIf="registerForm.controls.agree.hasError('required')">
+        Required*
+      </div>
+      </div>
+      <mat-checkbox formControlName="isMaster" name="isMaster" >Register as master</mat-checkbox>
+      <mat-form-field *ngIf="registerForm.get('isMaster')!.value" class="input" appearance="outline">
+        <mat-select formControlName="cityIds" multiple
+                    placeholder="Pleas choose city(s)">
+          <mat-option *ngFor="let city of cityList" [value]="city.id"> {{city.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registerForm.controls.cityIds.hasError('required')">
+          <strong> Choose city</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="input sing-in">
+        <span>Do you have an account? <a class="link" routerLink="/login">Login</a></span>
+        <button [disabled]="!registerForm.valid"  mat-stroked-button [ngClass]="{ 'registration-button': registerForm.valid}"  (click)="onSubmit()">REGISTER</button>
+      </div>
+  </form>
+  </div>
+</div>

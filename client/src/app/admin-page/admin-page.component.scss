@@ -1,0 +1,41 @@
+
+mat-grid-tile {
+
+}
+mat-grid-list{
+  display: block;
+}
+
+
+.button-list{
+  position: absolute;
+  top: 0;
+  left:5px;
+  right:5px;
+  margin: 0;
+  width: 90%;
+}
+.link{
+  color: inherit;
+  text-decoration: none;
+  width: 100%;
+}
+mat-list-item{
+  //border-bottom: 1px solid #eaeaea;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  &:hover{
+    color: #008ffe;
+    transition: all 0.1s;
+  }
+}
+.lists{
+  position: absolute;
+  top: 0;
+  margin: 0;
+  width: 100%;
+}
+.selected{
+  color: #03a8f3;
+  background: #ecf3fa;
+}

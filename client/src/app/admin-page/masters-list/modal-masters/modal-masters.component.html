@@ -1,0 +1,79 @@
+<form [formGroup]="masterForm" class="form">
+  <div class="modal">
+    <h1>Add master</h1>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Master name</mat-label>
+      <input formControlName="name" class="input" name="name" type="name" matInput
+             placeholder="Ivan">
+      <mat-error *ngIf="masterForm.controls.name.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="!data" class="input" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" name="email" type="text" matInput placeholder="email@email.com">
+      <mat-error *ngIf="masterForm.controls.email.hasError('email') && !masterForm.controls.email.hasError('required')">
+        Please enter email like : clockwise@example.com
+      </mat-error>
+      <mat-error *ngIf="masterForm.controls.email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="!data" class="input" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input  formControlName="password" name="password" [type]="hide ? 'password' : 'text'" matInput placeholder="1">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="masterForm.controls.password.hasError('minlength') && !masterForm.controls.password.hasError('required')">
+        Please enter password min 6 length
+      </mat-error>
+      <mat-error *ngIf="masterForm.controls.password.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="!data" class="input" appearance="outline">
+      <mat-label>Repeat password</mat-label>
+      <input formControlName="repeatPassword" name="repeatPassword" matInput [type]="hideRepeatPass ? 'password' : 'text'"  >
+      <button type="button" mat-icon-button matSuffix (click)="hideRepeatPass = !hideRepeatPass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPass">
+        <mat-icon>{{hideRepeatPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="masterForm.controls.repeatPassword.hasError('minlength') && !masterForm.controls.repeatPassword.hasError('required')">
+        Please enter password min 6 length
+      </mat-error>
+      <mat-error *ngIf="masterForm.controls.repeatPassword.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="masterForm.controls.repeatPassword.hasError('matching')">
+        Confirm Password does not match
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Enter a rating from 0 to 5</mat-label>
+      <input formControlName="rating" name="rating" min="0" max="5" type="number" matInput placeholder="1">
+      <mat-error
+        *ngIf="(masterForm.controls.rating.hasError('min')||
+        masterForm.controls.rating.hasError('max')) && !masterForm.controls.rating.hasError('required')">
+        Please enter rating between 0 or 5
+      </mat-error>
+      <mat-error *ngIf="masterForm.controls.rating.hasError('required')">
+        Rating is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-select formControlName="cityIds" multiple
+                  placeholder="Pleas choose city(s)">
+        <mat-option *ngFor="let city of cityList" [value]="city.id"> {{city.name}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="masterForm.controls.cityIds.hasError('required')">
+        <strong> Choose city</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="button-group">
+      <button [disabled]="!masterForm.valid" mat-stroked-button [ngClass]="{ 'success': masterForm.valid}"  (click)="data?changeMaster():addMaster()">Add</button>
+      <button mat-stroked-button class="close" (click)="onNoClick()">Close</button>
+    </div>
+  </div>
+</form>

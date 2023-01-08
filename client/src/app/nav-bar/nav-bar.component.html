@@ -1,0 +1,20 @@
+<p>
+  <mat-toolbar class="nav-bar">
+    <span class="logo">
+    <a class="link" routerLink="/">  Clockwise Clockware</a>
+    </span>
+    <span></span>
+    <span class="buttons">
+   <a *ngIf="user" class="link" routerLink="admin/orders">  <button
+                                                               style="margin-right: 10px; border-color:white"
+                                                               mat-stroked-button>Admin Panel</button></a>
+   <a *ngIf="!user" class="link" routerLink="login"> <button mat-stroked-button
+                                                              style=" border-color:white">Login</button></a>
+     <button *ngIf="user" mat-stroked-button style=" border-color:white" (click)="logout()">Log out</button>
+      </span>
+  </mat-toolbar>
+</p>
+
+
+
+

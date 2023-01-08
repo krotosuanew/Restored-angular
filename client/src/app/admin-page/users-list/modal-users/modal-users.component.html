@@ -1,0 +1,61 @@
+<div class="modal">
+  <form [formGroup]="registerForm">
+    <h1>Add user</h1>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" name="name" type="text" matInput placeholder="Ivan">
+      <mat-error *ngIf="registerForm.controls.name.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" name="email" type="text" matInput placeholder="clockwise@example.com">
+      <mat-error *ngIf="registerForm.controls.email.hasError('email') && !registerForm.controls.email.hasError('required')">
+        Please enter email like : clockwise@example.com
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.email.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" name="password" matInput [type]="hide ? 'password' : 'text'">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="registerForm.controls.password.hasError('minlength') && !registerForm.controls.password.hasError('required')">
+        Please enter password min 6 length
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Repeat password</mat-label>
+      <input formControlName="repeatPassword" name="repeatPassword" matInput
+             [type]="hideRepeatPass ? 'password' : 'text'">
+      <button type="button" mat-icon-button matSuffix (click)="hideRepeatPass = !hideRepeatPass"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPass">
+        <mat-icon>{{hideRepeatPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="registerForm.controls.repeatPassword.hasError('minlength') && !registerForm.controls.repeatPassword.hasError('required')">
+        Please enter repeat password min 6 length
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.repeatPassword.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="registerForm.controls.repeatPassword.hasError('matching')">
+        Confirm Password does not match
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button [disabled]="!registerForm.valid" mat-stroked-button [ngClass]="{ 'success': registerForm.valid}" (click)="addUsers()">Add</button>
+      <button mat-stroked-button class="close" (click)="onNoClick()">Close</button>
+    </div>
+  </form>
+</div>

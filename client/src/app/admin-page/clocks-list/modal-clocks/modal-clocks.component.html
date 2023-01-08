@@ -1,0 +1,18 @@
+<form [formGroup]="clockForm" class="form">
+<div class="modal">
+  <h1 >{{textHeader}}</h1>
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>Clock name</mat-label>
+    <input formControlName="name" class="input" name="name" type="name" matInput
+           placeholder="Small">
+  </mat-form-field>
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>Time</mat-label>
+    <input formControlName="date" name="price" min="0"  type="time" matInput  placeholder="1">
+  </mat-form-field>
+  <div class="button-group">
+    <button mat-stroked-button class="success" (click)="data?changeClock():addClock()" >{{textButton}}</button>
+    <button mat-stroked-button class="close" (click)="onNoClick()">Close</button>
+  </div>
+</div>
+</form>
